@@ -8,7 +8,7 @@ const Dashboard = () => {
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    axios.get('http://localhost:8080/auth/verify')
+    axios.get('https://cheers-to-life-backend.vercel.app/auth/verify')
       .then(res => {
         if (res.data.status) {
           // User is authenticated
@@ -23,7 +23,7 @@ const Dashboard = () => {
   }, [navigate]);
   axios.defaults.withCredentials = true
   const handleLogout = () => {
-    axios.get('http://localhost:8080/auth/logout') // Assuming there's a logout route
+    axios.get('https://cheers-to-life-backend.vercel.app/auth/logout') // Assuming there's a logout route
       .then(res => {
         if(res.data.status) {
             navigate('/login')
