@@ -25,7 +25,7 @@ const UploadEvents = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:8080/api/admin/events", {
+    axios.post("https://cheers-to-life-backend.vercel.app/api/admin/events", {
       uploadedDate,
       eventName,
       startingDate,
