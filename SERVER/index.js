@@ -25,6 +25,7 @@ app.use(cors({
     methods : ["POST", "GET"],
     credentials: true
 })); // Enable CORS with credentials
+app.options('*', cors());
 app.use(cookieParser()); // Parse cookies
 
 // Routes
