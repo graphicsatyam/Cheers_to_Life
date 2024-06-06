@@ -84,7 +84,7 @@ router.post("/forgot-password", async (req, res) => {
             }
         });
 
-        const resetUrl = `http://localhost:3000/resetpassword/${token}`;
+        const resetUrl = `https://cheers-to-life-frontend.vercel.app/resetpassword/${token}`;
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
