@@ -18,7 +18,7 @@ import { UserRouter } from "./routes/user.js";
 // Middleware
 app.use(express.json()); // Parsing JSON bodies
 app.use(cors({
-    origin: /^https:\/\/cheers-to-life-frontend\.vercel\.app(:\d+)?(\/.*)?$/,
+    origin: ["https://cheers-to-life-frontend-ak6yrffkd-graphicsatyams-projects.vercel.app"],
     methods : ["POST", "GET"],
     credentials: true
 })); // Enable CORS with credentials
