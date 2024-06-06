@@ -9,7 +9,7 @@ const ForgotPassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:8080/auth/forgot-password", {
+    axios.post("https://cheers-to-life-backend.vercel.app/auth/forgot-password", {
       email, // Include email in the request body
     })
     .then((response) => {
