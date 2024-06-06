@@ -10,7 +10,7 @@ const ResetPassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:8080/auth/reset-password/${token}`, {
+    axios.post(`https://cheers-to-life-backend.vercel.app/auth/reset-password/${token}`, {
       password,
     }).then(response => {
       if (response.data.status) {
