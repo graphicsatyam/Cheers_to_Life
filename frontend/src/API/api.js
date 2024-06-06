@@ -3,7 +3,7 @@ import axios from "axios";
 
 const getAllUsersData = async () => {
     try {
-        const response = await axios.get('http://localhost:8080/api/admin/users', {
+        const response = await axios.get('https://cheers-to-life-backend.vercel.app/api/admin/users', {
             headers: {
                 'Authorization': `Bearer ${process.env.REACT_APP_API_TOKEN}`, // Ensure the token is set in .env
                 'Content-Type': 'application/json'
