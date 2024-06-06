@@ -8,7 +8,7 @@ export const AdminEvent = () => {
 
     const getAllEventsData = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/admin/events', {
+            const response = await axios.get('https://cheers-to-life-backend.vercel.app/api/admin/events', {
                 headers: {
                     'Authorization': `Bearer ${process.env.REACT_APP_API_TOKEN}`, // Ensure the token is set in .env
                     'Content-Type': 'application/json'
