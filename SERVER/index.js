@@ -17,14 +17,22 @@ import { UserRouter } from "./routes/user.js";
 
 // Middleware
 app.use(express.json()); // Parsing JSON bodies
+const allowedOrigins = [
+    "https://cheers-to-life-frontend.vercel.app",
+    "https://cheers-to-life-frontend-ak6yrffkd-graphicsatyams-projects.vercel.app"
+];
+
 app.use(cors({
-    origin: [
-        "https://cheers-to-life-frontend.vercel.app",
-        "https://cheers-to-life-frontend-ak6yrffkd-graphicsatyams-projects.vercel.app"
-    ],
-    methods : ["POST", "GET"],
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ["POST", "GET"],
     credentials: true
-})); // Enable CORS with credentials
+}));
 app.options('*', cors());
 app.use(cookieParser()); // Parse cookies
 
