@@ -23,7 +23,7 @@ const LoginPage = () => {
     setErrorMessage(""); // Reset error message
     setSuccessMessage(""); // Reset success message
 
-    axios.post("http://localhost:8080/auth/login", {
+    axios.post("https://cheers-to-life-backend.vercel.app/auth/login", {
       email,
       password,
     }).then((response) => {
