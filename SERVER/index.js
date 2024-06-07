@@ -19,10 +19,7 @@ import { UserRouter } from "./routes/user.js";
 app.use(express.json()); // Parsing JSON bodies
 
 // Define allowed origins
-const allowedOrigins = [
-    "https://cheers-to-life-frontend.vercel.app",
-    "https://cheers-to-life-frontend-ak6yrffkd-graphicsatyams-projects.vercel.app"
-];
+const allowedOrigins = [*];
 
 // CORS Configuration
 app.use(cors({
