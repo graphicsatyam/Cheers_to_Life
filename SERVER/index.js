@@ -17,33 +17,45 @@ import { UserRouter } from "./routes/user.js";
 
 // Middleware
 app.use(express.json()); // Parsing JSON bodies
+
+// Define allowed origins
 const allowedOrigins = [
     "https://cheers-to-life-frontend.vercel.app",
     "https://cheers-to-life-frontend-ak6yrffkd-graphicsatyams-projects.vercel.app"
 ];
 
+// CORS Configuration
 app.use(cors({
     origin: function (origin, callback) {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            // If origin is not allowed, respond with an error
+            return callback(new Error('Not allowed by CORS'));
         }
+        // Allow requests from allowed origins
+        return callback(null, true);
     },
-    methods: ["POST", "GET"],
-    credentials: true
+    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"], // Include all methods you need
+    credentials: true // Allow credentials (cookies, authorization headers, etc.)
 }));
-app.options('*', cors());
+
+// Handle preflight requests for all routes
+app.options('*', cors({
+    origin: allowedOrigins,
+    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization", "x-requested-with", "origin", "accept", "x-access-token"]
+}));
+
 app.use(cookieParser()); // Parse cookies
 
 // Routes
 app.use('/auth', UserRouter); // Using UserRouter for paths starting with /auth
 
-
 app.get('/vipin', async (req, res) => {
     res.send('Hello Vipin Don')
-  });
-
+});
 
 // Routes for the Admin Cases 
 app.use("/api/admin", adminRoutes); // Use correct variable name and import statement
